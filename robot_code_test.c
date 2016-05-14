@@ -1,4 +1,5 @@
 
+//this simple program will power 2 motor ports.
 task main()
 {
 motor[port7] = -127;
