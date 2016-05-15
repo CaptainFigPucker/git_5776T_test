@@ -64,12 +64,17 @@ task move_with_joystick {
 	while(true)
 	{
 		int min_val = 10;
-		int top_right_power = limit_range(vexRT(Ch3), min_val) - limit_range(vexRT(Ch4) , min_val);
-		int bottom_right_power = limit_range(vexRT(Ch3), min_val)+ limit_range(vexRT(Ch4), min_val);
-		int bottom_left_power = limit_range(vexRT(Ch3), min_val)-limit_range(vexRT(Ch4), min_val);
-		int top_left_power = limit_range(vexRT(Ch3), min_val)+limit_range(vexRT(Ch4), min_val);
+		int side_power = vexRT(Ch2)
+		if(side_power > min_val){
+			power_motors(-1 * side_power, -1 * side_power, side_power, side_power);
+		} else {
+			int top_right_power = limit_range(vexRT(Ch3), min_val) - limit_range(vexRT(Ch4) , min_val);
+			int bottom_right_power = limit_range(vexRT(Ch3), min_val)+ limit_range(vexRT(Ch4), min_val);
+			int bottom_left_power = limit_range(vexRT(Ch3), min_val)-limit_range(vexRT(Ch4), min_val);
+			int top_left_power = limit_range(vexRT(Ch3), min_val)+limit_range(vexRT(Ch4), min_val);
 
-		power_motors(top_right_power, bottom_right_power, bottom_left_power, top_right_power);
+			power_motors(top_right_power, bottom_right_power, bottom_left_power, top_right_power);
+		}
 	}
 }
 
